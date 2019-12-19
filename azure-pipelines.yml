@@ -37,11 +37,15 @@ jobs:
     inputs:
       packageType: 'sdk'
       useGlobalJson: true
-  - task: PowerShell@2
+  # - task: PowerShell@2
+  #   displayName: 'Build Script'
+  #   inputs:
+  #     targetType: filePath
+  #     filePath: ./build.ps1
+  - task: CmdLine@2
     displayName: 'Build Script'
     inputs:
-      targetType: filePath
-      filePath: ./build.ps1  
+      script: dotnet tool restore && dotnet run --project build -- $args
   - task: NuGetCommand@2
     displayName: 'Push package to Github'
     inputs:
