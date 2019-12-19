@@ -26,4 +26,4 @@ jobs:
   - task: CmdLine@2
     displayName: 'Build Script'
     inputs:
-      script: dotnet tool restore && dotnet run --project build -- %*
+      script: powershell -noexit "& .\build.ps1"
