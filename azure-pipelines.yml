@@ -18,12 +18,12 @@ jobs:
     inputs:
       packageType: 'sdk'
       useGlobalJson: true
-  - task: PowerShell@2
-    displayName: 'Build Script'
-    inputs:
-      targetType: filePath
-      filePath: ./build.ps1
+  # - task: PowerShell@2
+  #   displayName: 'Build Script'
+  #   inputs:
+  #     targetType: filePath
+  #     filePath: ./build.ps1
   - task: CmdLine@2
     displayName: 'Build Script'
     inputs:
-      script: dotnet tool restore && dotnet run --project build -- $args
+      script: dotnet tool restore && dotnet run --project build -- %*
