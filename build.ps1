@@ -1,4 +1,7 @@
 $ErrorActionPreference = "Stop";
 dotnet tool restore
-
-dotnet run --project build -- $args
+try {
+  dotnet run --project build -- $args
+} catch {
+  exit 0
+}
